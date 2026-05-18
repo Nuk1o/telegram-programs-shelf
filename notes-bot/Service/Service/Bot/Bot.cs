@@ -13,7 +13,6 @@ public class Bot : BackgroundService
 
     public Bot(ILogger<Bot> logger)
     {
-        DotEnv.Load();
         _logger = logger;
         using var cts = new CancellationTokenSource();
         var secrets = DotEnv.Read();
@@ -83,11 +82,10 @@ public class Bot : BackgroundService
         {
             if (_logger.IsEnabled(LogLevel.Information))
             {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+                _logger.LogInformation("BOT>>>Worker running at: {time}", DateTimeOffset.Now);
             }
 
             await Task.Delay(1000, stoppingToken);
         }
     }
-    
 }
